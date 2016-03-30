@@ -7,7 +7,8 @@ var gulp      = require('gulp'),
   os          = require('os'),
   rename      = require('gulp-rename'),
   scss        = require('gulp-sass'),
-  uglify      = require('gulp-uglify');
+  uglify      = require('gulp-uglify'),
+  watch       = require('gulp-watch');
 
 var buildDir = '/var/www/html/';
 
@@ -86,3 +87,8 @@ gulp.task('vendor', ['clean'], function(){
       .pipe(gulp.dest(buildDir + 'scripts/'));
 })
 
+gulp.task('watch', function() {
+    gulp.watch('app/**/*.js', ['default']);
+    gulp.watch('app/**/*.scss', ['default']);
+    gulp.watch('app/**/*.html', ['default']);
+});
